@@ -1,8 +1,10 @@
+const itemsPerPage = 20;
+
 export const getPrevPage = (pageNum) => {
-  return pageNum * 20;
+  return pageNum * itemsPerPage;
 };
 export const getCurrentPage = (pageNum) => {
-  return (pageNum + 1) * 20;
+  return (pageNum + 1) * itemsPerPage;
 };
 export const sortUpData = (arr, field) => {
   return arr.sort((a, b) => {

@@ -9,7 +9,7 @@ const Pagination = ({ pageCount, setNewPage, portionSize = 3 }) => {
   const users = useSelector((store) => store.mainPage.users);
   const pages = [];
 
-  for (let i = 0; i < pageCount; i++) {
+  for (let i = 0; i < pageCount; i++) { 
     pages.push(i + 1);
   }
 

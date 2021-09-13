@@ -1,0 +1,24 @@
+.img{
+    width: 20px;
+    object-fit: contain;
+    margin-left: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.imgContainer{
+ position: absolute;
+ top: 10px;
+ right: 13px;
+}
+.arrowDown, .arrowUp{
+    width: 20px;
+    object-fit: contain;
+    left: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.arrowDown{
+    transform: rotate(180deg);
+}

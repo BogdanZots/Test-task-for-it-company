@@ -27,37 +27,37 @@ const Table = ({data, sortData, directionSort, setCurrentUserData}) => {
                         {fieldToSearch === sortFields.id
                             ? (<SortArrow directionSort={directionSort}/>)
                             : ("")}
-                        id
+                        Id
                     </th>
                     <th className={s.thContainer} onClick={() => sortField(sortFields.firstName)}>
                         {fieldToSearch === sortFields.firstName
                             ? (<SortArrow directionSort={directionSort}/>)
                             : ("")}
-                        firstName
+                        First Name
                     </th>
                     <th className={s.thContainer} onClick={() => sortField(sortFields.lastName)}>
                         {fieldToSearch === sortFields.lastName
                             ? (<SortArrow directionSort={directionSort}/>)
                             : ("")}
-                        lastName
+                        Last Name
                     </th>
                     <th className={s.thContainer} onClick={() => sortField(sortFields.email)}>
                         {fieldToSearch === sortFields.email
                             ? (<SortArrow directionSort={directionSort}/>)
                             : ("")}
-                        email
+                        Email
                     </th>
                     <th className={s.thContainer} onClick={() => sortField(sortFields.phone)}>
                         {fieldToSearch === sortFields.phone
                             ? (<SortArrow directionSort={directionSort}/>)
                             : ("")}
-                        phone
+                        Phone
                     </th>
                     <th className={s.thContainer} onClick={() => sortField(sortFields.state)}>
                         {fieldToSearch === sortFields.state
                             ? (<SortArrow directionSort={directionSort}/>)
                             : ("")}
-                        state
+                        State
                     </th>
                 </tr>
             </thead>

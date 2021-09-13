@@ -8,11 +8,11 @@ const SortArrow = ({ directionSort }) => {
     <>
       {directionSort ? (
         <span className={s.imgContainer}>
-          <img className={s.arrowUp} alt="sort" src={arrowUp}></img>
+          <img className={s.arrowDown} alt="sort" src={arrowUp}></img>
         </span>
       ) : (
         <span className={s.imgContainer}>
-          <img className={s.arrowDown} alt="sort" src={arrowUp}></img>
+          <img className={s.arrowUp} alt="sort" src={arrowUp}></img>
         </span>
       )}
     </>

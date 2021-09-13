@@ -1,8 +1,8 @@
 
 
-const GET_NEW_PAGE = "GET-NEW-PAGE"
-const GET_PAGE_COUNT = "GET-PAGE-COUNT"
-const GET_USERS = "GET-USERS"
+const SET_NEW_PAGE = "SET-NEW-PAGE"
+const SET_PAGE_COUNT = "SET-PAGE-COUNT"
+const SET_USERS = "SET-USERS"
 
 
 const initialState = {
@@ -12,19 +12,19 @@ const initialState = {
 };
 
 export const mainPageReducer = (state = initialState, action) => {
-    if (action.type === GET_USERS) {
+    if (action.type === SET_USERS) {
         return{
             ...state,
             users: action.users
         }
     }
-    if (action.type === GET_NEW_PAGE) {
+    if (action.type === SET_NEW_PAGE) {
         return{
             ...state,
             currentPage:action.currentPage
         }
     }
-    if (action.type === GET_PAGE_COUNT) {
+    if (action.type === SET_PAGE_COUNT) {
         return{
             ...state,
             pageCount : action.pageCount/state.itemsPerPage
@@ -36,6 +36,6 @@ export const mainPageReducer = (state = initialState, action) => {
     };
 };
 
-export const setNewPageAC = (currentPage) => ({type: 'GET-NEW-PAGE', currentPage});
-export const setPageCountAC = (pageCount) => ({type: 'GET-PAGE-COUNT', pageCount});
-export const setUsersAC = (users) => ({type: 'GET-USERS', users});
+export const setNewPageAC = (currentPage) => ({type: 'SET-NEW-PAGE', currentPage});
+export const setPageCountAC = (pageCount) => ({type: 'SET-PAGE-COUNT', pageCount});
+export const setUsersAC = (users) => ({type: 'SET-USERS', users});

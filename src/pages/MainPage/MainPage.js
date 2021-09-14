@@ -35,11 +35,11 @@ export const MainPage = () => {
     let sortArray;
     if (field === sortFields.state) {
       sortArray = sortUpObjData(usersCopy, field);
-    } else if (!directionSort && field === sortFields.state) {
+    }  if (!directionSort && field === sortFields.state) {
       sortArray = sortDownObjData(usersCopy, field);
-    } else if (directionSort) {
+    }  if (directionSort) {
       sortArray = sortUpData(usersCopy, field);
-    } else if (!directionSort) {
+    }  if (!directionSort) {
       sortArray = sortDownData(usersCopy, field);
     }
 

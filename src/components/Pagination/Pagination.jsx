@@ -4,9 +4,13 @@ import { getPrevPage, getCurrentPage } from "../../helpers/helpers";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { PropTypes } from "prop-types";
+import { setCurrentPageAC, setUsersToSortAC } from "../../redux/mainPageReducer";
+import { setPrevPageAC } from "../../redux/mainPageReducer";
+import { useDispatch } from "react-redux";
 
-const Pagination = ({ pageCount, setNewPage, portionSize = 3 }) => {
-  const users = useSelector((store) => store.mainPage.users);
+const Pagination = ({ portionSize = 3 }) => {
+  const dispatch = useDispatch()
+  const {allUsers,itemsPerPage , pageCount} = useSelector(store => store.mainPage);
   const pages = [];
 
   for (let i = 0; i < pageCount; i++) { 
@@ -19,7 +23,8 @@ const Pagination = ({ pageCount, setNewPage, portionSize = 3 }) => {
   let rightPortionNumber = portionNumber * portionSize;
 
   const showNewPage = (prevPageNum, pageNum) => {
-    setNewPage(users.slice(prevPageNum, pageNum));
+    dispatch(setUsersToSortAC(allUsers.slice(prevPageNum * itemsPerPage, pageNum * itemsPerPage)))
+
   };
 
   return (
@@ -41,6 +46,8 @@ const Pagination = ({ pageCount, setNewPage, portionSize = 3 }) => {
           <li
             key={Math.random(0, 1)}
             onClick={() => {
+              dispatch(setCurrentPageAC(getCurrentPage(p)))
+              dispatch(setPrevPageAC(getPrevPage(p - 1)))
               showNewPage(getPrevPage(p - 1), getCurrentPage(p));
             }}
             class={s.pageNumber}

@@ -7,6 +7,8 @@ import Card from "../../components/Card/Card";
 import Input from "../../components/Input/Input";
 import Pagintation from "../../components/Pagination/Pagination";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setUsersToSortAC } from "../../redux/mainPageReducer";
 import { sortFields } from "../../consts/consts";
 import Error from "../../components/Error/Error";
 import {
@@ -17,37 +19,34 @@ import {
   getFilteredUsers,
 } from "../../helpers/helpers";
 export const MainPage = () => {
-  const { currentPage, itemsPerPage, pageCount } = useSelector(
-    (store) => store.mainPage
-  );
+  const dispatch = useDispatch();
+  const { currentPage, itemsPerPage, allUsers , usersToSort } = useSelector((store) => store.mainPage);
+  useEffect(() => {
+    dispatch(setUsersToSortAC(allUsers.slice(currentPage , itemsPerPage)));
+  }, [allUsers,dispatch]);
 
   const [directionSort, setDirectionSort] = useState(true);
   const [currentUser, setCurrentUserData] = useState({});
   const [userToFind, setUserToFind] = useState("");
-  const [usersCopy, setusersCopy] = useState([]);
   const data = useApiData();
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    setUsers(data.users);
-    setusersCopy([...users]);
-  }, [data.users, users]);
   const sortData = (field) => {
     let sortArray;
     if (field === sortFields.state) {
-      sortArray = sortUpObjData(usersCopy, field);
-    }  if (!directionSort && field === sortFields.state) {
-      sortArray = sortDownObjData(usersCopy, field);
-    }  if (directionSort) {
-      sortArray = sortUpData(usersCopy, field);
-    }  if (!directionSort) {
-      sortArray = sortDownData(usersCopy, field);
+      sortArray = sortUpObjData(usersToSort, field);
     }
-
-    data.setData(sortArray);
+    if (!directionSort && field === sortFields.state) {
+      sortArray = sortDownObjData(usersToSort, field);
+    }
+    if (directionSort) {
+      sortArray = sortUpData(usersToSort, field);
+    }
+    if (!directionSort) {
+      sortArray = sortDownData(usersToSort, field);
+    }
     setDirectionSort(!directionSort);
   };
 
-  const filteredUsers = getFilteredUsers(usersCopy, userToFind);
+  const filteredUsers = getFilteredUsers(usersToSort, userToFind);
   return (
     <div className={s.container}>
       {data.isError ? <Error /> : null}
@@ -56,10 +55,10 @@ export const MainPage = () => {
       <Table
         directionSort={directionSort}
         sortData={sortData}
-        data={filteredUsers.slice(currentPage, itemsPerPage)}
+        data={filteredUsers}
         setCurrentUserData={setCurrentUserData}
       />
-      <Pagintation pageCount={pageCount} setNewPage={data.setData} />
+      <Pagintation />
       <Card currentUser={currentUser} />
     </div>
   );

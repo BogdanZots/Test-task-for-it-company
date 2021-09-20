@@ -1,12 +1,12 @@
 import React from "react";
 import s from "./Input.module.css";
-const Input = ({  userToFind, setUserToFind }) => {
-
+const Input = ({ userToFind, setUserToFind, handleSearchMode }) => {
   return (
-    <div class={s.controlGroup}>
+    <div className={s.controlGroup}>
       <input
         onChange={(e) => {
-            setUserToFind(e.target.value)
+          handleSearchMode(e);
+          setUserToFind(e.target.value);
         }}
         id="input"
         type="text"
@@ -18,5 +18,5 @@ const Input = ({  userToFind, setUserToFind }) => {
     </div>
   );
 };
-
+Input.whyDidYouRender = true;
 export default Input;

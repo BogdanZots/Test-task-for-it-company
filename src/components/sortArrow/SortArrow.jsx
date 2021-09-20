@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./SortArrow.module.css";
-import arrowDown from "../../assets/images/arrowDown.png";
 import arrowUp from "../../assets/images/arrowUp.png";
 
 const SortArrow = ({ directionSort }) => {

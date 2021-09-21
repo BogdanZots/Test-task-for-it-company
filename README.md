@@ -1,5 +1,6 @@
 
 [Тестовое задание для компании ITRex]
+Посмотреть - https://bogdanzots.github.io/Test-task-for-it-company/
 
 Функционал : 
 1 ) Поиск ( по имени и штату) 
